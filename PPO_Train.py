@@ -3,7 +3,7 @@ import pandas as pd
 from stable_baselines3 import PPO, TD3, SAC
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
-from stock_env import PortfolioEnv
+from portfolio_env import PortfolioEnv
 
 # Load data
 a500_data = pd.read_csv('data/A500_train.csv')
