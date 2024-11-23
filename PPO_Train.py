@@ -51,18 +51,9 @@ env = PortfolioEnv(features, targets, benchmark_returns, render_mode='human')
 
 # Vectorized environment
 vec_env = DummyVecEnv([lambda: env])
-vec_env = VecNormalize(vec_env, norm_obs=True, norm_reward=False)
+vec_env = VecNormalize(vec_env, norm_obs=True, norm_reward=True)
 
-# model = TD3("MlpPolicy",vec_env,verbose=1)
-# # Train the model
-# model.learn(total_timesteps=10000)
-#
-# # Save the model
-# model.save("td3_portfolio_model")
-#
-# print("Model saved as 'td3_portfolio_model'")
-
-model = PPO("MlpPolicy",vec_env,verbose=1)
+model = PPO("MlpPolicy",vec_env,verbose=1,gamma=0.997)
 # Train the model
 model.learn(total_timesteps=10000)
 
@@ -70,15 +61,6 @@ model.learn(total_timesteps=10000)
 model.save("ppo_portfolio_model")
 
 print("Model saved as 'ppo_portfolio_model'")
-
-# model = SAC("MlpPolicy",vec_env,verbose=1)
-# # Train the model
-# model.learn(total_timesteps=10000)
-#
-# # Save the model
-# model.save("sac_portfolio_model")
-#
-# print("Model saved as 'sac_portfolio_model'")
 
 # Evaluate the model
 obs = vec_env.reset()

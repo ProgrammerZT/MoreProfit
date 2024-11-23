@@ -46,7 +46,7 @@ targets = np.hstack((targets, np.full((targets.shape[0], 1), 0.02 / 250)))
 env = PortfolioEnv(features, targets, benchmark_returns)
 # Vectorized environment
 vec_env = DummyVecEnv([lambda: env])
-vec_env = VecNormalize(vec_env,norm_obs=True, norm_reward=False)
+vec_env = VecNormalize(vec_env,norm_obs=True, norm_reward=True)
 # Load the pre-trained model
 model = PPO.load("ppo_portfolio_model.zip")
 
