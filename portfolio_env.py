@@ -114,7 +114,7 @@ class PortfolioEnv(gym.Env):
         reward = getattr(self, "prev_reward")
         self.prev_reward = self.delayed_reward  # Store current reward for next step
 
-        return self._get_obs(), reward, terminated, truncated, {"weights": self.weights}
+        return self._get_obs(), reward, terminated, truncated, {"weights": self.weights,"cash":self.cash}
 
     def _get_obs(self):
         """
