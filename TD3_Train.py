@@ -22,10 +22,3 @@ model.learn(total_timesteps=10000)
 model.save("td3_portfolio_model")
 
 print("Model saved as 'td3_portfolio_model'")
-
-# Evaluate the model
-obs = vec_env.reset()
-for i in range(1000):
-    action, _states = model.predict(obs, deterministic=True)
-    obs, rewards, dones, info = vec_env.step(action)
-    vec_env.render()
