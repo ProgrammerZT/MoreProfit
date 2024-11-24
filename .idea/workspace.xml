@@ -5,17 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73ee67d7-4931-4a19-a234-d8ea10183eca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MoreProfit.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PPO_Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPO_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD3_Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/TD3_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio_env.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ppo_portfolio_model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/ppo_portfolio_model.zip" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +48,7 @@
     &quot;last_opened_file_path&quot;: &quot;F:/NTU/Reinforcement Learning In Finance/MoreProfit&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.PPO_Train">
+  <component name="RunManager" selected="Python.PPO_Test">
     <configuration name="PPO_Test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MoreProfit" />
       <option name="ENV_FILES" value="" />
@@ -106,8 +95,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PPO_Train" />
         <item itemvalue="Python.PPO_Test" />
+        <item itemvalue="Python.PPO_Train" />
       </list>
     </recent_temporary>
   </component>
