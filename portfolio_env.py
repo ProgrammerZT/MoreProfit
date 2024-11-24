@@ -29,7 +29,8 @@ class PortfolioEnv(gym.Env):
         self.delayed_reward = None
         # Shape of input data
         self.n_samples, self.n_features = features.shape
-
+        # Add a small constant for the cash column (target for cash allocation)
+        self.targets = np.hstack((self.targets, np.full((self.targets.shape[0], 1), self.cash_daily_return)))
         # Initialize time step
         self.current_step = 0
 
@@ -94,13 +95,9 @@ class PortfolioEnv(gym.Env):
             next_market_returns = self.targets[self.current_step]
             benchmark_return = self.benchmark_returns[self.current_step]
 
-        # Assign fixed return for the risk-free cash asset
-        next_market_returns[2] = self.cash_daily_return
-
         # Compute portfolio return
         portfolio_return = np.dot(self.weights, next_market_returns)
 
-        # In sb3, we sum our reward
         prev_cash = self.cash
 
         # Update cash value based on portfolio return

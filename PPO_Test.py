@@ -32,4 +32,7 @@ while not done:
     steps += 1
     env.render()  # Optionally render the environment state
 
+# Last day reward
+total_reward = total_reward+env.prev_reward
+
 print(f"Test completed in {steps} steps. Total reward: {np.exp(total_reward)}")

@@ -58,9 +58,6 @@ class DataPreprocessor:
         # Extract targets (涨跌幅 for A500 and C1000)
         self.targets = self.merged_data[['涨跌幅_A500', '涨跌幅_C1000']].values
 
-        # Add a small constant for the cash column (target for cash allocation)
-        self.targets = np.hstack((self.targets, np.full((self.targets.shape[0], 1), 0.02 / 250)))
-
         if self.benchmark_returns is not None:
             # Set benchmark returns to the fixed value (5% annualized return, i.e., 0.05 / 250 per day)
             self.benchmark_returns = np.full(self.merged_data.shape[0], self.benchmark_returns / 250)
