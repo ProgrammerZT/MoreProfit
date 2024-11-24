@@ -2,8 +2,10 @@ import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 
+
 class PortfolioEnv(gym.Env):
     def __init__(self, features, targets, benchmark_returns, initial_cash=1.0, cash_daily_return=0.02 / 250,
+                 no_bench_mark=False,
                  render_mode=None):
         """
         Initialize the Portfolio Environment.
@@ -23,7 +25,8 @@ class PortfolioEnv(gym.Env):
         self.benchmark_returns = benchmark_returns
         self.cash_daily_return = cash_daily_return
         self.render_mode = render_mode
-
+        self.no_bench_mark = no_bench_mark
+        self.delayed_reward = None
         # Shape of input data
         self.n_samples, self.n_features = features.shape
 
@@ -103,10 +106,15 @@ class PortfolioEnv(gym.Env):
         # Update cash value based on portfolio return
         self.cash *= (1 + portfolio_return)
 
-        log_return = np.log(self.cash/prev_cash)
+        log_return = np.log(self.cash / prev_cash)
 
-        # Compute delayed reward (excess return over benchmark)
-        self.delayed_reward = log_return - np.log(1+benchmark_return)
+        # self.delayed_reward = log_return
+        if self.no_bench_mark is True:
+            self.delayed_reward = log_return
+
+        if self.no_bench_mark is False:
+            # Compute delayed reward (excess return over benchmark)
+            self.delayed_reward = log_return - np.log(1 + benchmark_return)
 
         # Advance time step
         self.current_step += 1
@@ -119,7 +127,7 @@ class PortfolioEnv(gym.Env):
         reward = getattr(self, "prev_reward")
         self.prev_reward = self.delayed_reward  # Store current reward for next step
 
-        return self._get_obs(), reward, terminated, truncated, {"weights": self.weights,"cash":self.cash}
+        return self._get_obs(), reward, terminated, truncated, {"weights": self.weights, "cash": self.cash}
 
     def _get_obs(self):
         """

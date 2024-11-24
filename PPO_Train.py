@@ -8,7 +8,7 @@ preprocessor = DataPreprocessor('data/A500_train.csv', 'data/C1000_train.csv')
 features, targets, benchmark_returns = preprocessor.preprocess_data()
 
 # Initialize environment
-env = PortfolioEnv(features, targets, benchmark_returns, render_mode='human')
+env = PortfolioEnv(features, targets, benchmark_returns, render_mode='human',no_bench_mark=True)
 
 # Vectorized environment
 vec_env = DummyVecEnv([lambda: env])

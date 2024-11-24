@@ -9,7 +9,7 @@ preprocessor = DataPreprocessor('data/A500_test.csv', 'data/C1000_test.csv')
 features, targets, benchmark_returns = preprocessor.preprocess_data()
 
 # Initialize environment
-env = PortfolioEnv(features, targets, benchmark_returns)
+env = PortfolioEnv(features, targets, benchmark_returns,no_bench_mark=True)
 # Vectorized environment
 vec_env = DummyVecEnv([lambda: env])
 vec_env = VecNormalize(vec_env,norm_obs=True, norm_reward=True)
@@ -19,7 +19,7 @@ model = PPO.load("ppo_portfolio_model.zip")
 # Reset the environment
 obs, _ = env.reset()
 done = False
-total_reward = 1
+total_reward = 0
 steps = 0
 
 # Run a test episode
