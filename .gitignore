@@ -1,9 +1,5 @@
-
-__pycache__/data_preprocessor.cpython-312.pyc
 __pycache__/data_preprocessor.cpython-312.pyc
 __pycache__/portfolio_env.cpython-312.pyc
 *.pyc
-*.pyc
 /__pycache__
-/.idea
 /.idea
