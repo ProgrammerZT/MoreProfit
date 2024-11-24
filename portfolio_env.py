@@ -97,11 +97,16 @@ class PortfolioEnv(gym.Env):
         # Compute portfolio return
         portfolio_return = np.dot(self.weights, next_market_returns)
 
+        # In sb3, we sum our reward
+        prev_cash = self.cash
+
         # Update cash value based on portfolio return
         self.cash *= (1 + portfolio_return)
 
+        log_return = np.log(self.cash/prev_cash)
+
         # Compute delayed reward (excess return over benchmark)
-        self.delayed_reward = portfolio_return - benchmark_return
+        self.delayed_reward = log_return - np.log(1+benchmark_return)
 
         # Advance time step
         self.current_step += 1
