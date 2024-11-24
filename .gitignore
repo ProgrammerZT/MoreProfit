@@ -1,8 +1,0 @@
-# Ignore the .idea folder created by JetBrains IDEs (e.g., PyCharm, IntelliJ)
-.idea/
-
-# Ignore Python bytecode files
-__pycache__/
-
-# Ignore the .gitignore file itself
-.gitignore
